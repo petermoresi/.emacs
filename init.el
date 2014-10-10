@@ -69,15 +69,36 @@
 (add-to-list 'custom-theme-load-path "/Users/jenmoresi/.emacs.d/elpa/leuven-theme-20140929.1435")
 (load-theme 'leuven t)                  ;; for Emacs 24+
 
-;; Make emacs evil
+
+;; override default undo behavior
+(require 'undo-tree)
+
+;; $ cd ~/.emacs.d/plugins/
+;; ~/.emacs.d/plugins$ git clone git://gitorious.org/evil/evil.git
+
+;; Make emacs evil (vim-like)
 (add-to-list 'load-path "~/.emacs.d/plugins/evil")
 (require 'evil)
 (evil-mode 1)
 
 ;; load the evil-leader
+(add-to-list 'load-path "~/.emacs.d/plugins/evil-leader")
 (require 'evil-leader')
 
+;; mkdir -p ~/.emacs.d/plugins;
+;; cd ~/.emacs.d/plugins;
+;; git clone git://github.com/edwtjo/evil-org-mode.git
+
 ;; Make org-mode evil too
+(add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
+(require 'evil-org)
+
+
+(add-to-list 'load-path "~/.emacs.d/evil")
+(require 'evil)
+(evil-mode 1)
+
+
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
 (require 'evil-org)
 
