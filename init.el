@@ -69,10 +69,17 @@
 (add-to-list 'custom-theme-load-path "/Users/jenmoresi/.emacs.d/elpa/leuven-theme-20140929.1435")
 (load-theme 'leuven t)                  ;; for Emacs 24+
 
-;; evil-org-mode makes emacs tolerable for people who prefer concise command inputs.
+;; Make emacs evil
+(add-to-list 'load-path "~/.emacs.d/plugins/evil")
+(require 'evil)
+(evil-mode 1)
+
+;; load the evil-leader
+(require 'evil-leader')
+
+;; Make org-mode evil too
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
 (require 'evil-org)
-
 
 ;; Markdown Setup
 (autoload 'markdown-mode "markdown-mode"
