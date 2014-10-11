@@ -6,8 +6,9 @@
                          ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 ;; Load Ruby with RVM
-;; (require 'rvm)
-;; (rvm-use ruby-2.1.3");; use rvm's default ruby for the current Emacs session
+(add-to-list 'load-path "~/.emacs.d/elpa/rvm-20140601.458")
+(require 'rvm)
+(rvm-use-default);; use rvm's default ruby for the current Emacs session
 
 ;; AVOID WEIRD BEHAVIOR IN PATH ENVIRONMENT VARIABLE Copy PATH from ~/.bashrc
 (let ((path (shell-command-to-string ". ~/.bashrc; echo -n $PATH")))
@@ -17,15 +18,6 @@
          (split-string-and-unquote path ":")
          exec-path)))
 
-
-;; Enable Color in Shell
-;; http://www.emacswiki.org/cgi-bin/wiki?AnsiColor
-(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
-(add-hook 'rsh-mode-hook 'ansi-color-for-comint-mode-on)
-
-;; Map up/down keys to previous input in the shell
-(define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
-(define-key comint-mode-map (kbd "<down>") 'comint-next-input)
 
 ;; ORG Mode Configuration
 (setq org-directory "~/org")
@@ -67,11 +59,12 @@
 	 "* %?\nEntered on %U\n %i\n %a")))
 
 ;; Leuven is beautiful paint for org-mode
-(add-to-list 'custom-theme-load-path "/Users/jenmoresi/.emacs.d/elpa/leuven-theme-20140929.1435")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/leuven-theme-20140929.1435")
 (load-theme 'leuven t)                  ;; for Emacs 24+
 
 
 ;; override default undo behavior
+(add-to-list 'load-path "~/.emacs.d/elpa/undo-tree-20140509.522")
 (require 'undo-tree)
 
 
@@ -119,6 +112,15 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.html.erb\\'" . web-mode))
 
+;; Enable Color in Shell
+;; http://www.emacswiki.org/cgi-bin/wiki?AnsiColor
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(add-hook 'rsh-mode-hook 'ansi-color-for-comint-mode-on)
+
+;; Map up/down keys to previous input in the shell
+(define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
+(define-key comint-mode-map (kbd "<down>") 'comint-next-input)
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -130,3 +132,5 @@
  '(org-babel-load-languages (quote ((R . t) (emacs-lisp . t) (js . t) (ruby . t) (python . t) (sqlite . t) (ledger . t) (C . t) (calc . t) (clojure . t) (org . t) (awk . t) (sql . t))))
  '(org-confirm-babel-evaluate nil))
 (put 'upcase-region 'disabled nil)
+
+
