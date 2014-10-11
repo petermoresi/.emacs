@@ -97,13 +97,6 @@
 
 (yas-global-mode 1)
 
-(add-to-list 'load-path "~/.emacs.d/evil")
-(require 'evil)
-(evil-mode 1)
-
-(add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
-(require 'evil-org)
-
 ;; Markdown Setup
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
