@@ -23,6 +23,10 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (add-hook 'rsh-mode-hook 'ansi-color-for-comint-mode-on)
 
+;; Map up/down keys to previous input in the shell
+(define-key comint-mode-map (kbd "<up>") 'comint-previous-input)
+(define-key comint-mode-map (kbd "<down>") 'comint-next-input)
+
 ;; ORG Mode Configuration
 (setq org-directory "~/org")
 
@@ -70,39 +74,23 @@
 ;; override default undo behavior
 (require 'undo-tree)
 
-<<<<<<< HEAD
-;; Make emacs evil (vim-like)
-;; Installed from git://gitorious.org/evil/evil.git
-=======
-;; $ cd ~/.emacs.d/plugins/
-;; ~/.emacs.d/plugins$ git clone git://gitorious.org/evil/evil.git
 
 ;; Make emacs evil (vim-like)
->>>>>>> 248d84cf2a1b7b6f4e66fd9b8c47218724fdd172
+;; Installed from git://gitorious.org/evil/evil.git
 (add-to-list 'load-path "~/.emacs.d/plugins/evil")
 (require 'evil)
 (evil-mode 1)
 
 ;; load the evil-leader
-<<<<<<< HEAD
 ;; Installed from https://github.com/cofi/evil-leader 
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-leader")
 (require 'evil-leader)
-=======
-(add-to-list 'load-path "~/.emacs.d/plugins/evil-leader")
-(require 'evil-leader')
->>>>>>> 248d84cf2a1b7b6f4e66fd9b8c47218724fdd172
-
-;; mkdir -p ~/.emacs.d/plugins;
-;; cd ~/.emacs.d/plugins;
-;; git clone git://github.com/edwtjo/evil-org-mode.git
 
 ;; Make org-mode evil too
 ;; Installed from git://github.com/edwtjo/evil-org-mode.git
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
 (require 'evil-org)
 
-<<<<<<< HEAD
 ;; YASnippet
 ;; Installed from https://github.com/capitaomorte/yasnippet
 (add-to-list 'load-path "~/.emacs.d/plugins/yasnippet")
@@ -115,16 +103,13 @@
 
 
 (yas-global-mode 1)
-=======
 
 (add-to-list 'load-path "~/.emacs.d/evil")
 (require 'evil)
 (evil-mode 1)
 
-
 (add-to-list 'load-path "~/.emacs.d/plugins/evil-org-mode")
 (require 'evil-org)
->>>>>>> 248d84cf2a1b7b6f4e66fd9b8c47218724fdd172
 
 ;; Markdown Setup
 (autoload 'markdown-mode "markdown-mode"
