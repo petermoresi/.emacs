@@ -32,6 +32,8 @@
      evil-org
      undo-tree
      yasnippet
+     powerline
+     powerline-evil
      helm
      helm-company
      helm-git
