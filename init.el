@@ -45,6 +45,7 @@
      leuven-theme)))
 
 (menu-bar-mode -1)
+(tool-bar-mode -1)
 (load-theme 'tango-dark t) ;; for Emacs 24+
 
 ;; enable windmove - http://www.emacswiki.org/emacs/WindMove
