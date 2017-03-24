@@ -6,7 +6,7 @@
   (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                            ("org" . "http://orgmode.org/elpa/")
                            ("marmalade" . "http://marmalade-repo.org/packages/")
-                           ("melpa" . "http://melpa.milkbox.net/packages/")))
+                           ("melpa" . "https://melpa.org/packages/")))
   (package-initialize)
 
   (mapc
@@ -14,18 +14,13 @@
      (or (package-installed-p package)
          (package-install package)))
    ;; List of packages to install
-   '(apache-mode
-     chef-mode
-     cider
-     clojure-mode
-     coffee-mode
-     org
+   '(org
      web-mode
+     feature-mode
      markdown-mode
      flycheck
      company
      magit
-     web-mode
      htmlize
      evil
      evil-leader
@@ -42,11 +37,16 @@
      helm-make
      helm-orgcard
      helm-proc
-     leuven-theme)))
+     leuven-theme
+     jade)))
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(load-theme 'tango-dark t) ;; for Emacs 24+
+(menu-bar-mode 1)
+(tool-bar-mode 1)
+(load-theme 'leuven t) ;; for Emacs 24+
+
+(setq tab-width 2) ;; or any other preferred value
+(defvaralias 'c-basic-offset 'tab-width)
+(defvaralias 'cperl-indent-level 'tab-width)
 
 ;; enable windmove - http://www.emacswiki.org/emacs/WindMove
 ;; use shift and arrow keys to switch between buffers.
@@ -206,6 +206,9 @@
 
 ; helm config
 (require 'helm-config)
+(global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
+(global-set-key (kbd "C-x C-f") #'helm-find-files)
 (helm-mode 1)
 
 ;; helm company setup
@@ -311,6 +314,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["#fffefe" "#9d0000" "#006a00" "#0e1b00" "#6845138" "#840086" "#003567" "#494949"])
  '(custom-safe-themes
    (quote
-    ("603a9c7f3ca3253cb68584cb26c408afcf4e674d7db86badcfe649dd3c538656" "40bc0ac47a9bd5b8db7304f8ef628d71e2798135935eb450483db0dbbfff8b11" "08851585c86abcf44bb1232bced2ae13bc9f6323aeda71adfa3791d6e7fea2b6" "f0ea6118d1414b24c2e4babdc8e252707727e7b4ff2e791129f240a2b3093e32" default))))
+    ("ad9747dc51ca23d1c1382fa9bd5d76e958a5bfe179784989a6a666fe801aadf2" "43c1a8090ed19ab3c0b1490ce412f78f157d69a29828aa977dae941b994b4147" "603a9c7f3ca3253cb68584cb26c408afcf4e674d7db86badcfe649dd3c538656" "40bc0ac47a9bd5b8db7304f8ef628d71e2798135935eb450483db0dbbfff8b11" "08851585c86abcf44bb1232bced2ae13bc9f6323aeda71adfa3791d6e7fea2b6" "f0ea6118d1414b24c2e4babdc8e252707727e7b4ff2e791129f240a2b3093e32" default)))
+ '(helm-mode t)
+ '(hl-sexp-background-color "#060404")
+ '(org-babel-load-languages (quote ((emacs-lisp . t) (js . t))))
+ '(org-confirm-babel-evaluate nil)
+ '(package-selected-packages
+   (quote
+    (load-theme-buffer-local feature-mode jade leuven-theme helm-proc helm-orgcard helm-make helm-google helm-gitlab helm-git helm-company helm powerline-evil powerline yasnippet evil-org evil-leader evil htmlize magit company flycheck markdown-mode web-mode))))
